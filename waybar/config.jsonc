@@ -1,0 +1,96 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 40,
+  "spacing": 6,
+  "margin-top": 6,
+  "margin-bottom": 6,
+  "margin-left": 6,
+  "margin-right": 6,
+  
+  "modules-left": ["cpu", "memory", "disk"],
+  "modules-center": ["clock"],
+  "modules-right": ["tray", "pulseaudio", "network", "bluetooth", "battery", "custom/power"],
+  
+  "custom/launcher": {
+    "format": "󰣇",
+    "tooltip": false,
+    "on-click": "fuzzel",
+    "on-click-right": "niri msg action toggle-overview"
+  },
+  
+  "cpu": {
+    "interval": 5,
+    "format": "<span font_size='x-large'>󰍛</span>   {usage:02}%",
+    "tooltip": false,
+    "on-click-right": "btm"
+  },
+  
+  "memory": {
+    "interval": 5,
+    "format": "<span size='x-large'>󰘚</span>   {percentage:02}%",
+    "tooltip": false,
+    "on-click-right": "btm"
+  },
+
+
+  "disk": {
+    "format": "<span size='x-large'>󰋊</span>   {used}",
+    "format-alt": "<span size='x-large'>󰋊</span>   {free} free",
+    "interval": 30,
+    "path": "/",
+    "tooltip-format": "root {path}: {used} used, {free} free\nTotal: {total}"
+  }, 
+ 
+  
+  "clock": {
+    "format": "{:%H:%M}",
+    "tooltip-format": "<big>{:%A, %d %B %Y}</big>\n<tt><small>{calendar}</small></tt>",
+    "format-alt": "{:%d/%m}"
+  },
+  
+  "tray": {
+    "icon-size": 20,
+    "spacing": 8
+  },
+
+  "pulseaudio": {
+    "format": "<span size='x-large'>{icon}</span>   {volume}%",
+    "format-muted": "󰝟",
+    "format-icons": {
+      "default": ["󰕿", "󰖀", "󰕾"]
+    },
+    "scroll-step": 5,
+    "on-click": "pavucontrol"
+  },
+  
+  "network": {
+    "format-wifi": "<span size='large'>󰖩</span>",
+    "format-ethernet": "<span size='large'>󰈀</span>",
+    "format-disconnected": "<span size='large'>󰖪</span>",
+    "tooltip-format": "{essid} ({signalStrength}%)"
+  },
+  
+  "bluetooth": {
+    "format": "<span size='x-large'>󰂯</span>",
+    "format-disabled": "<span size='x-large'></span>",
+    "format-connected": "<span size='x-large'>󰂱</span>",
+    "on-click": "blueman-manager"
+  },
+  
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "<span size='x-large'>{icon}</span>   {capacity}%",
+    "format-charging": "<span size='x-large'>󰂄</span>   {capacity}%",
+    "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+  },
+  
+  "custom/power": {
+    "format": "<span size='large'>⏻</span>",
+    "tooltip": false,
+    "on-click": "wlogout"
+  }
+}

@@ -1,0 +1,108 @@
+@import "wallust-colors.css";
+
+* {
+  border: none;
+  border-radius: 16px;
+  font-family: "Ubuntu", "Font Awesome 6 Free";
+  font-size: 14px;
+  font-weight: 500;
+  margin: 4px;
+}
+
+window#waybar {
+  background: transparent;
+}
+
+tooltip {
+  background: @background-alt;
+  border-radius: 10px;
+  color: @foreground;
+}
+
+/* Frosted glass modules */
+#cpu,
+#memory,
+#disk,
+#clock,
+#tray,
+#pulseaudio,
+#network,
+#bluetooth,
+#battery,
+#custom-power {
+  border-radius: 20px;
+  padding: 2px 16px;
+}
+
+#cpu {
+  color: @cpuText;
+  background: @cpuBg;
+}
+
+#memory {
+  color: @memText;
+  background: @memBg;
+}
+
+
+#disk {
+  color: @diskText;
+  background: @diskBg;
+}
+/* Center clock */
+#clock {
+  color: @clockText;
+  padding: 4px 32px;
+  background: @clockBg;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+/* Right modules */
+#tray {
+  color: @trayText;
+  background: @trayBg;
+}
+
+#pulseaudio {
+  color: @audioText;
+  background: @audioBg;
+}
+
+#network {
+  color: @networkText;
+  background: @networkBg;
+}
+
+#bluetooth {
+  color: @bluetoothText;
+  background: @bluetoothBg;
+}
+
+#battery {
+  color: @batteryText;
+  background: @batteryBg;
+}
+
+#custom-power {
+  color: @powerText;
+  padding: 0 18px;
+  background: @powerBg;
+}
+
+/* Battery states */
+#battery.warning {
+  color: #ffb86c;
+  background: rgba(255, 184, 108, 0.3);
+}
+
+#battery.critical {
+  color: #ff657a;
+  background: rgba(255, 101, 122, 0.4);
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  /*0%, 100% { opacity: 1; }*/
+  50% { opacity: 0.6; }
+}

@@ -1,0 +1,25 @@
+ @define-color foreground #616D70;
+ @define-color background #C4C4D0;
+ @define-color background-alt rgba(196,196,208,0.25);
+ @define-color cursor #829CAD;
+ 
+ @define-color cpuText #A9A9B5;
+ @define-color cpuBg rgba(169,169,181, 0.2);
+ @define-color memText #D8F1F9;
+ @define-color memBg rgba(216,241,249, 0.2);
+ @define-color diskText #E1F2BE;
+ @define-color diskBg rgba(225,242,190, 0.2);
+ @define-color clockText #CEE5F7;
+ @define-color clockBg rgba(206,229,247, 0.2);
+ @define-color trayText #F0CEE1;
+ @define-color trayBg rgba(240,206,225, 0.2);
+ @define-color audioText #A3CCEA;
+ @define-color audioBg rgba(163,204,234, 0.2);
+ @define-color networkText #F3A1DA;
+ @define-color networkBg rgba(243,161,218, 0.2);
+ @define-color bluetoothText #616D70;
+ @define-color bluetoothBg rgba(97,109,112, 0.2); 
+ @define-color batteryText #01112F; 
+ @define-color batteryBg rgba(1,17,47, 0.2); 
+ @define-color powerText #D8F1F9; 
+ @define-color powerBg rgba(216,241,249, 0.2); 
