@@ -8,12 +8,12 @@
   "margin-left": 6,
   "margin-right": 6,
   
-  "modules-left": ["cpu", "memory", "disk"],
-  "modules-center": ["clock"],
+  "modules-left": ["custom/launcher", "cpu", "memory", "disk"],
+  "modules-center": ["custom/date", "custom/time"],
   "modules-right": ["tray", "pulseaudio", "network", "bluetooth", "battery", "custom/power"],
   
   "custom/launcher": {
-    "format": "󰣇",
+    "format": "<span size='x-large'></span>",
     "tooltip": false,
     "on-click": "fuzzel",
     "on-click-right": "niri msg action toggle-overview"
@@ -22,31 +22,38 @@
   "cpu": {
     "interval": 5,
     "format": "<span font_size='x-large'>󰍛</span>   {usage:02}%",
-    "tooltip": false,
-    "on-click-right": "btm"
+    "on-click-right": "gnome-system-monitor"
   },
   
   "memory": {
-    "interval": 5,
     "format": "<span size='x-large'>󰘚</span>   {percentage:02}%",
-    "tooltip": false,
-    "on-click-right": "btm"
+    "on-click": "gnome-system-monitor",
+    "interval": 5
   },
 
 
   "disk": {
-    "format": "<span size='x-large'>󰋊</span>   {used}",
-    "format-alt": "<span size='x-large'>󰋊</span>   {free} free",
-    "interval": 30,
+    "format": "<span size='x-large'>󰋊</span>   {used} / {total}",
     "path": "/",
-    "tooltip-format": "root {path}: {used} used, {free} free\nTotal: {total}"
+    "on-click": "baobab",
+    "interval": 30
   }, 
- 
+
   
-  "clock": {
-    "format": "{:%H:%M}",
-    "tooltip-format": "<big>{:%A, %d %B %Y}</big>\n<tt><small>{calendar}</small></tt>",
-    "format-alt": "{:%d/%m}"
+  "custom/date": {
+    "exec": "date '+%Y %b %d %a'",
+    "format": "<span size='large'></span>   {}",
+    "tooltip": false,
+    "on-click": "gnome-calendar",
+    "interval": 1
+  },
+
+  "custom/time": {
+    "exec": "date '+%H:%M'",
+    "format": "<span size='large'></span>   {}",
+    "tooltip": false,
+    "on-click": "gnome-clocks",
+    "interval": 1
   },
   
   "tray": {

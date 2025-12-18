@@ -19,7 +19,7 @@ tooltip {
   color: @foreground;
 }
 
-/* Frosted glass modules */
+#custom-launcher,
 #cpu,
 #memory,
 #disk,
@@ -32,6 +32,10 @@ tooltip {
 #custom-power {
   border-radius: 20px;
   padding: 2px 16px;
+}
+
+#custom-launcher {
+    color: @clockText;
 }
 
 #cpu {
@@ -49,13 +53,12 @@ tooltip {
   color: @diskText;
   background: @diskBg;
 }
-/* Center clock */
-#clock {
+
+#custom-date,
+#custom-time {
   color: @clockText;
-  padding: 4px 32px;
-  background: @clockBg;
-  font-size: 15px;
-  font-weight: bold;
+  padding: 4px 12px;
+  font-size: 16px;
 }
 
 /* Right modules */
