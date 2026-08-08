@@ -2,7 +2,6 @@
 // "/-" comments out the following node.
 // Check the wiki for a full description of the configuration:
 // https://yalter.github.io/niri/Configuration:-Introduction
-
 // Input device configuration.
 // Find the full list of options on the wiki:
 // https://yalter.github.io/niri/Configuration:-Input
@@ -69,15 +68,20 @@ input {
     // focus-follows-mouse max-scroll-amount="0%"
 }
 
+cursor {
+    xcursor-theme "phinger-cursors-dark"
+    xcursor-size 24
+}
+
 // You can configure outputs by their name, which you can find
 // by running `niri msg outputs` while inside a niri instance.
 // The built-in laptop monitor is usually called "eDP-1".
 // Find more information on the wiki:
 // https://yalter.github.io/niri/Configuration:-Outputs
 // Remember to uncomment the node by removing "/-"!
-output "eDP-2" {
+output "DP-2" {
     // Uncomment this line to disable this output.
-    off
+    // off
 
     // Resolution and, optionally, refresh rate of the output.
     // The format is "<width>x<height>" or "<width>x<height>@<refresh rate>".
@@ -103,7 +107,14 @@ output "eDP-2" {
     // so to put another output directly adjacent to it on the right, set its x to 1920.
     // If the position is unset or results in an overlap, the output is instead placed
     // automatically.
-    position x=1280 y=0
+    position x=0 y=0
+}
+
+output "DP-4" {
+    mode "1920x1080@60"
+    scale 1
+    transform "90"
+    position x=1920 y=0  // Right monitor (1920+2560)
 }
 
 // Settings that influence how windows are positioned and sized.
@@ -111,8 +122,8 @@ output "eDP-2" {
 // https://yalter.github.io/niri/Configuration:-Layout
 layout {
     // Set gaps around windows in logical pixels.
-    gaps 12
-
+    gaps 10
+    
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left
     //   or right edge of the screen.
@@ -138,7 +149,7 @@ layout {
     // preset-window-heights { }
 
     // You can change the default width of the new windows.
-    default-column-width { proportion 0.5; }
+    default-column-width { proportion 1.0; }
     // If you leave the brackets empty, the windows themselves will decide their initial width.
     // default-column-width {}
 
@@ -159,7 +170,7 @@ layout {
         // off
 
         // How many logical pixels the ring extends out from the windows.
-        width 4
+        width 2
 
         // Colors can be set in a variety of ways:
         // - CSS named colors: "red"
@@ -167,7 +178,7 @@ layout {
         // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
 
         // Color of the ring on the active monitor.
-        active-color "#7fc8ff"
+        active-color "#A4756F"
 
         // Color of the ring on inactive monitors.
         //
@@ -182,7 +193,6 @@ layout {
         // You can use any CSS linear-gradient tool on the web to set these up.
         // Changing the color space is also supported, check the wiki for more info.
         //
-        // active-gradient from="#80c8ff" to="#c7ff7f" angle=45
 
         // You can also color the gradient relative to the entire view
         // of the workspace, rather than relative to just the window itself.
@@ -215,7 +225,7 @@ layout {
     // You can enable drop shadows for windows.
     shadow {
         // Uncomment the next line to enable shadows.
-        // on
+        on
 
         // By default, the shadow draws only around its window, and not behind it.
         // Uncomment this setting to make the shadow draw behind its window.
@@ -303,7 +313,7 @@ animations {
     // off
 
     // Slow down all animations by this factor. Values below 1 speed them up instead.
-    // slowdown 3.0
+    slowdown 4.0
 }
 
 // Window rules let you adjust behavior for individual windows.
@@ -343,8 +353,8 @@ window-rule {
 
 // Example: enable rounded corners for all windows.
 // (This example rule is commented out with a "/-" in front.)
-/-window-rule {
-    geometry-corner-radius 12
+window-rule {
+    geometry-corner-radius 8
     clip-to-geometry true
 }
 
@@ -368,10 +378,11 @@ binds {
     Mod+Return hotkey-overlay-title="Open a Zellij session" { spawn-sh "alacritty -e zellij"; }
     Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
-    Mod+F1 hotkey-overlay-title="Open Firefox: Web browser" { spawn "firefox"; }
-    Mod+F2 hotkey-overlay-title="Open Nekoray: V2ray graphical client" { spawn "nekoray"; }
-    Mod+F3 hotkey-overlay-title="Open Telegram Desktop" { spawn "telegram-desktop"; }
-    Mod+F4 hotkey-overlay-title="Open Thunar: File explorer" { spawn "thunar"; }
+    Mod+B hotkey-overlay-title="Open Firefox: Web browser" { spawn "firefox"; }
+    Mod+F1 hotkey-overlay-title="Open Nekoray: V2ray graphical client" { spawn "nekoray"; }
+    Mod+F2 hotkey-overlay-title="Open Telegram Desktop" { spawn "telegram-desktop"; }
+    Mod+E hotkey-overlay-title="Open Thunar: File explorer" { spawn "thunar"; }
+    Mod+Shift+W hotkey-overlay-title="Spawn Random Walpaper" { spawn "randomWallpaper"; }
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
     // For example, this is a standard bind to toggle the screen reader (orca).

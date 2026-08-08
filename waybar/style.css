@@ -1,12 +1,10 @@
 @import "wallust-colors.css";
 
 * {
-  border: none;
-  border-radius: 16px;
   font-family: "Ubuntu", "Font Awesome 6 Free";
   font-size: 14px;
   font-weight: 500;
-  margin: 4px;
+  margin: 2px;
 }
 
 window#waybar {
@@ -31,11 +29,56 @@ tooltip {
 #battery,
 #custom-power {
   border-radius: 20px;
-  padding: 2px 16px;
+  padding: 2px 12px;
 }
 
-#custom-launcher {
-    color: @clockText;
+#custom-file-explorer:hover,
+#custom-launcher:hover,
+#custom-launcher:hover,
+#cpu:hover,
+#memory:hover,
+#disk:hover,
+#clock:hover,
+#tray:hover,
+#pulseaudio:hover,
+#network:hover,
+#bluetooth:hover,
+#battery:hover,
+#custom-power:hover {
+  color: @clockText;
+  animation: pulse 2s infinite;
+}
+
+#clock:hover {
+    background-color: @clockText;
+}
+
+#clock:hover {
+    background-color: @clockText;
+}
+
+#tray:hover {
+    background-color: @trayText;
+}
+
+#pulseaudio:hover {
+    background-color: @audioText;
+}
+
+#network:hover {
+    background-color: @networkText;
+}
+
+#bluetooth:hover {
+    background-color: @bluetoothText;
+}
+
+#battery:hover {
+    background-color: @batteryText;
+}
+
+#custom-power:hover {
+    background-color: @powerText;
 }
 
 #cpu {

@@ -1,0 +1,16 @@
+// Wallust will replace {color1} with actual hex values
+layout {
+    border {
+        active {
+            color "{color1}"
+        }
+        inactive {
+            color "{color8}"
+        }
+    }
+    
+    focus-ring {
+        active-color "{color2}"
+        inactive-color "{color8}"
+    }
+}
