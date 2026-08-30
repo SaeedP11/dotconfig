@@ -359,18 +359,23 @@ window-rule {
 }
 
 window-rule {
-    match app-id="firefox"
-    open-on-workspace "1"
+    match app-id=r#"firefox$"#
+    open-on-workspace "browser"
 }
 
 window-rule {
-    match app-id="code"
-    open-on-workspace "2"
+    match app-id=r#"code$"#
+    open-on-workspace "dev"
 }
 
 window-rule {
-    match app-id="org.telegram.desktop"
-    open-on-workspace "3"
+    match app-id=r#"fresh$"#
+    open-on-workspace "dev"
+}
+
+window-rule {
+    match app-id=r#"org.telegram.desktop$"#
+    open-on-workspace "messenger"
 }
 
 binds {
@@ -392,7 +397,7 @@ binds {
     Mod+T hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
     Mod+Return hotkey-overlay-title="Open a Zellij session" { spawn-sh "alacritty -e zellij"; }
     Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
-    Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
+    Super+Alt+L hotkey-overlay-title="Lock the Screen: qylock-lock" { spawn "qylock-lock"; }
     Mod+B hotkey-overlay-title="Open Firefox: Web browser" { spawn "firefox"; }
     Mod+F1 hotkey-overlay-title="Open Nekoray: V2ray graphical client" { spawn "nekoray"; }
     Mod+F2 hotkey-overlay-title="Open Telegram Desktop" { spawn "telegram-desktop"; }
@@ -561,7 +566,7 @@ binds {
     // Mod+Ctrl+1 { move-window-to-workspace 1; }
 
     // Switches focus between the current and the previous workspace.
-    // Mod+Tab { focus-workspace-previous; }
+    Mod+Tab { focus-workspace-previous; }
 
     // The following binds move the focused window in and out of a column.
     // If the window is alone, they will consume it into the nearby column to the side.
