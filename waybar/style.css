@@ -27,6 +27,7 @@ tooltip {
 #network,
 #bluetooth,
 #battery,
+#custom-theme,
 #custom-power {
   border-radius: 20px;
   padding: 2px 12px;
@@ -44,6 +45,7 @@ tooltip {
 #network:hover,
 #bluetooth:hover,
 #battery:hover,
+#custom-theme:hover,
 #custom-power:hover {
   color: @clockText;
   animation: pulse 2s infinite;
@@ -79,6 +81,10 @@ tooltip {
 
 #custom-power:hover {
     background-color: @powerText;
+}
+
+#custom-theme:hover {
+    background-color: @themeText;
 }
 
 #cpu {
@@ -134,6 +140,11 @@ tooltip {
   color: @powerText;
   padding: 0 18px;
   background: @powerBg;
+}
+
+#custom-theme {
+  color: @themeText;
+  background: @themeBg;
 }
 
 /* Battery states */

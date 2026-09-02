@@ -23,3 +23,6 @@
  @define-color batteryBg rgba({{color8 | rgb}}, 0.2); 
  @define-color powerText {{color9}}; 
  @define-color powerBg rgba({{color9 | rgb}}, 0.2); 
+
+ @define-color themeText {{color10}};
+ @define-color themeBg rgba({{color10 | rgb}}, 0.2);

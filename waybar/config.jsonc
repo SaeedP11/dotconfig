@@ -10,7 +10,7 @@
   
   "modules-left": ["custom/launcher", "custom/file-explorer", "cpu", "memory", "disk"],
   "modules-center": ["custom/date", "custom/time"],
-  "modules-right": ["tray", "pulseaudio", "network", "bluetooth", "battery", "custom/power"],
+  "modules-right": ["custom/theme", "tray", "pulseaudio", "network", "bluetooth", "battery", "custom/power"],
   
   "custom/launcher": {
     "format": "<span size='x-large'></span>",
@@ -109,5 +109,13 @@
     "format": "<span size='large'>⏻</span>",
     "tooltip": false,
     "on-click": "wlogout"
+  },
+
+  "custom/theme": {
+    "exec": "~/.config/waybar/scripts/theme-status.sh",
+    "return-type": "json",
+    "interval": 15,
+    "on-click": "darkman toggle",
+    "tooltip": true
   }
 }
