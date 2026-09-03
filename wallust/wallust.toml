@@ -35,3 +35,6 @@ threshold = 11
 [templates]
 waybar.template = 'colors-waybar.css'
 waybar.target = '~/.config/waybar/wallust-colors.css'
+
+alacritty.template = 'colors-alacritty.toml'
+alacritty.target = '~/.config/alacritty/colors.toml'

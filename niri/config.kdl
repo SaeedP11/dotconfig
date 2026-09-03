@@ -278,6 +278,13 @@ layout {
 // See the binds section below for more spawn examples.
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
+// Export niri/Wayland env vars to D-Bus activation AND the systemd --user
+// manager, so independently-started user services (like darkman) can see
+// NIRI_SOCKET, WAYLAND_DISPLAY, etc. Without this, `niri msg` inside any
+// darkman hook script silently fails since it runs outside niri's own
+// process tree. Must come before other spawn-at-startup entries.
+spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "DISPLAY" "NIRI_SOCKET" "XDG_CURRENT_DESKTOP"
+
 spawn-at-startup "waybar"
 spawn-at-startup "swww-daemon"
 spawn-at-startup "nm-applet"
