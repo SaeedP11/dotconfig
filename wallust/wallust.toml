@@ -38,3 +38,6 @@ waybar.target = '~/.config/waybar/wallust-colors.css'
 
 alacritty.template = 'colors-alacritty.toml'
 alacritty.target = '~/.config/alacritty/colors.toml'
+
+mako.template = 'colors-mako.ini'
+mako.target = '~/.config/mako/wallust-colors'
