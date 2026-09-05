@@ -1,116 +1,161 @@
 {
   "layer": "top",
   "position": "top",
-  "height": 30,
+  "height": 32,
   "spacing": 6,
-  "margin-top": 2,
-  "margin-bottom": 3,
-  "margin-left": 5,
-  "margin-right": 5,
-  
-  "modules-left": ["custom/launcher", "custom/file-explorer", "cpu", "memory", "disk"],
-  "modules-center": ["custom/date", "custom/time"],
-  "modules-right": ["custom/theme", "tray", "pulseaudio", "network", "bluetooth", "battery", "custom/power"],
-  
+  "margin-top": 8,
+  "margin-bottom": 0,
+  "margin-left": 10,
+  "margin-right": 10,
+  "modules-left": [
+    "group/launcher",
+    "group/system"
+  ],
+  "modules-center": [
+    "group/datetime"
+  ],
+  "modules-right": [
+    "group/quick",
+    "group/status",
+    "custom/power"
+  ],
+  "group/launcher": {
+    "orientation": "horizontal",
+    "modules": [
+      "custom/launcher",
+      "custom/file-explorer"
+    ]
+  },
+  "group/system": {
+    "orientation": "horizontal",
+    "modules": [
+      "cpu",
+      "memory",
+      "disk"
+    ]
+  },
+  "group/datetime": {
+    "orientation": "horizontal",
+    "modules": [
+      "custom/date",
+      "custom/time"
+    ]
+  },
+  "group/quick": {
+    "orientation": "horizontal",
+    "modules": [
+      "custom/theme",
+      "tray"
+    ]
+  },
+  "group/status": {
+    "orientation": "horizontal",
+    "modules": [
+      "pulseaudio",
+      "network",
+      "bluetooth",
+      "battery"
+    ]
+  },
   "custom/launcher": {
-    "format": "<span size='x-large'></span>",
+    "format": "<span size='large'>󱓞</span>",
     "tooltip": false,
     "on-click": "fuzzel",
     "on-click-right": "niri msg action toggle-overview"
   },
-
   "custom/file-explorer": {
-    "format": "<span size='x-large'></span>",
+    "format": "<span size='large'>󰉋</span>",
     "tooltip": false,
     "on-click": "nautilus"
   },
-  
   "cpu": {
     "interval": 5,
-    "format": "<span font_size='x-large'>󰍛</span>   {usage:02}%",
+    "format": "<span size='large'>󰍛</span>   {usage:02}%",
     "on-click": "gnome-system-monitor",
     "on-click-right": "$TERM -e btm"
   },
-  
   "memory": {
-    "format": "<span size='x-large'>󰘚</span>   {percentage:02}%",
+    "format": "<span size='large'>󰘚</span>   {percentage:02}%",
     "on-click": "gnome-system-monitor",
     "on-click-right": "$TERM -e btm",
     "interval": 5
   },
-
-
   "disk": {
-    "format": "<span size='x-large'>󰋊</span>   {used} / {total}",
+    "format": "<span size='large'>󰋊</span>   {used} / {total}",
     "path": "/",
     "on-click": "baobab",
     "interval": 30
-  }, 
-
-  
+  },
   "custom/date": {
     "exec": "date '+%Y %b %d %a'",
-    "format": "<span size='large'></span>   {}",
+    "format": "<span size='medium'>󰭧</span>   {}",
     "tooltip": false,
     "on-click": "gnome-calendar",
     "interval": 60
   },
-
   "custom/time": {
     "exec": "date '+%H:%M'",
-    "format": "<span size='large'></span>   {}",
+    "format": "<span size='medium'>󰅐</span>   {}",
     "tooltip": false,
     "on-click": "gnome-clocks",
     "interval": 1
   },
-  
   "tray": {
-    "icon-size": 20,
-    "spacing": 8
+    "icon-size": 18,
+    "spacing": 10
   },
-
   "pulseaudio": {
-    "format": "<span size='x-large'>{icon}</span>   {volume}%",
+    "format": "<span size='large'>{icon}</span>   {volume}%",
     "format-muted": "󰝟",
     "format-icons": {
-      "default": ["󰕿", "󰖀", "󰕾"]
+      "default": [
+        "󰕿",
+        "󰖀",
+        "󰕾"
+      ]
     },
     "scroll-step": 5,
     "on-click": "pavucontrol"
   },
-  
   "network": {
-    "format-wifi": "<span size='x-large'>󰖩</span>   {essid}   {signalStrength}%",
-    "format-ethernet": "<span size='x-large'>󰈀</span>",
-    "format-disconnected": "<span size='x-large'>󰖪</span>   Disconnected",
+    "format-wifi": "<span size='large'>󰖩</span>   {signalStrength}%",
+    "format-ethernet": "<span size='large'>󰈀</span>",
+    "format-disconnected": "<span size='large'>󰖪</span>",
     "tooltip-format": "{essid} ({signalStrength}%)",
     "on-click": "nm-connection-editor"
   },
-  
   "bluetooth": {
-    "format": "<span size='x-large'>󰂯</span>",
-    "format-disabled": "<span size='x-large'></span>",
-    "format-connected": "<span size='x-large'>󰂱</span>",
+    "format": "<span size='large'>󰂯</span>",
+    "format-disabled": "<span size='large'>󰂯</span>",
+    "format-connected": "<span size='large'>󰂱</span>",
     "on-click": "",
     "on-click-right": "blueman-manager"
   },
-  
   "battery": {
     "states": {
       "warning": 30,
       "critical": 15
     },
-    "format": "<span size='x-large'>{icon}</span>   {capacity}%",
-    "format-charging": "<span size='x-large'>󰂄</span>   {capacity}%",
-    "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+    "format": "<span size='large'>{icon}</span>   {capacity}%",
+    "format-charging": "<span size='large'>󰂄</span>   {capacity}%",
+    "format-icons": [
+      "󰁺",
+      "󰁻",
+      "󰁼",
+      "󰁽",
+      "󰁾",
+      "󰁿",
+      "󰂀",
+      "󰂁",
+      "󰂂",
+      "󰁹"
+    ]
   },
-  
   "custom/power": {
     "format": "<span size='large'>⏻</span>",
     "tooltip": false,
     "on-click": "wlogout"
   },
-
   "custom/theme": {
     "exec": "~/.config/waybar/scripts/theme-status.sh",
     "return-type": "json",

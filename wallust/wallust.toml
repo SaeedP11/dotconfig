@@ -6,7 +6,9 @@ backend = "full"
 
 # What color space to use to produce and select the most prominent colors:
 # lab - labmixed - lch - lchmixed
-color_space = "labmixed"
+# labmixed -> lch: less "muddy"/averaged picks, more true to the actual
+# vivid hues present in the wallpaper.
+color_space = "lch"
 
 # NOTE: All filters will fill 16 colors (from color0 to color15), 16 color
 #       variations are the 'ilusion' of more colors by opaquing color1 to color5.
@@ -30,7 +32,20 @@ palette = "softlight"
 #  2 - 10     Perceptible at a glance.
 #  11 - 49    Colors are more similar than opposite
 #  100        Colors are exact opposite
-threshold = 11
+# Bumped from 11 -> 20: pulls the picks further apart from each other so
+# waybar/mako/alacritty end up with a more differentiated set of accents
+# instead of several near-identical hues from the same wallpaper region.
+threshold = 20
+
+# Boosts saturation of the final palette (1-100). Wallpapers with washed-out
+# or low-contrast regions were producing fairly dull accents; this pushes
+# them back toward the wallpaper's actual vividness. Lower this (or comment
+# it out) if colors start looking oversaturated/artificial on some images.
+saturation = 45
+
+# Nudges any color that would end up too close to the background toward a
+# more readable contrast, so accents don't disappear into background-alt.
+check_contrast = true
 
 [templates]
 waybar.template = 'colors-waybar.css'

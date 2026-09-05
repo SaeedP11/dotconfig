@@ -2,9 +2,10 @@
 
 * {
   font-family: "Ubuntu", "Font Awesome 6 Free";
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
-  margin: 2px;
+  margin: 0;
+  padding: 0;
 }
 
 window#waybar {
@@ -13,153 +14,121 @@ window#waybar {
 
 tooltip {
   background: @background-alt;
+  border: 1px solid alpha(@foreground, 0.12);
   border-radius: 10px;
   color: @foreground;
+  padding: 6px 10px;
 }
 
+/* ---- Group pills ------------------------------------------------ */
+/* Every cluster of modules shares one neutral capsule background
+   instead of each module carrying its own colored block — the
+   per-module wallust accent colors now live on the icon/text and on
+   hover, so the bar reads as one cohesive shape instead of a row of
+   mismatched tiles. */
+
+#launcher,
+#system,
+#datetime,
+#quick,
+#status {
+  background: alpha(@background-alt, 0.92);
+  border: 1.5px solid alpha(@foreground, 0.16);
+  border-radius: 16px;
+  box-shadow: 0 4px 14px alpha(black, 0.35);
+  padding: 0 4px;
+}
+
+/* ---- Individual modules inside a group --------------------------- */
+
 #custom-launcher,
+#custom-file-explorer,
 #cpu,
 #memory,
 #disk,
-#clock,
+#custom-date,
+#custom-time,
+#custom-theme,
 #tray,
 #pulseaudio,
 #network,
 #bluetooth,
-#battery,
-#custom-theme,
-#custom-power {
-  border-radius: 20px;
-  padding: 2px 12px;
+#battery {
+  padding: 5px 12px;
+  border-radius: 12px;
+  transition: background 200ms ease-in-out, color 200ms ease-in-out;
 }
 
+#custom-launcher:hover,
 #custom-file-explorer:hover,
-#custom-launcher:hover,
-#custom-launcher:hover,
 #cpu:hover,
 #memory:hover,
 #disk:hover,
-#clock:hover,
+#custom-date:hover,
+#custom-time:hover,
+#custom-theme:hover,
 #tray:hover,
 #pulseaudio:hover,
 #network:hover,
 #bluetooth:hover,
-#battery:hover,
-#custom-theme:hover,
-#custom-power:hover {
-  color: @clockText;
-  animation: pulse 2s infinite;
-}
-
-#clock:hover {
-    background-color: @clockText;
-}
-
-#clock:hover {
-    background-color: @clockText;
-}
-
-#tray:hover {
-    background-color: @trayText;
-}
-
-#pulseaudio:hover {
-    background-color: @audioText;
-}
-
-#network:hover {
-    background-color: @networkText;
-}
-
-#bluetooth:hover {
-    background-color: @bluetoothText;
-}
-
 #battery:hover {
-    background-color: @batteryText;
+  background: alpha(@foreground, 0.08);
 }
 
-#custom-power:hover {
-    background-color: @powerText;
+/* ---- Accent colors (icon/text only, from wallust) ---------------- */
+
+#custom-launcher,
+#custom-file-explorer {
+  color: @foreground;
+  font-weight: 600;
 }
 
-#custom-theme:hover {
-    background-color: @themeText;
-}
-
-#cpu {
-  color: @cpuText;
-  background: @cpuBg;
-}
-
-#memory {
-  color: @memText;
-  background: @memBg;
-}
-
-
-#disk {
-  color: @diskText;
-  background: @diskBg;
-}
-
+#cpu       { color: @cpuText; }
+#memory    { color: @memText; }
+#disk      { color: @diskText; }
 #custom-date,
 #custom-time {
   color: @clockText;
-  padding: 4px 12px;
-  font-size: 16px;
+  font-size: 14px;
 }
+#tray      { color: @trayText; }
+#pulseaudio { color: @audioText; }
+#network   { color: @networkText; }
+#bluetooth { color: @bluetoothText; }
+#battery   { color: @batteryText; }
+#custom-theme { color: @themeText; }
 
-/* Right modules */
-#tray {
-  color: @trayText;
-  background: @trayBg;
-}
-
-#pulseaudio {
-  color: @audioText;
-  background: @audioBg;
-}
-
-#network {
-  color: @networkText;
-  background: @networkBg;
-}
-
-#bluetooth {
-  color: @bluetoothText;
-  background: @bluetoothBg;
-}
-
-#battery {
-  color: @batteryText;
-  background: @batteryBg;
-}
+/* ---- Power button: standalone accent circle, not part of a group - */
 
 #custom-power {
   color: @powerText;
-  padding: 0 18px;
-  background: @powerBg;
+  background: alpha(@powerText, 0.22);
+  border: 1.5px solid alpha(@powerText, 0.5);
+  border-radius: 15px;
+  min-width: 30px;
+  min-height: 30px;
+  padding: 0;
+  margin-left: 8px;
+  box-shadow: 0 4px 14px alpha(black, 0.35);
+  transition: background 200ms ease-in-out;
 }
 
-#custom-theme {
-  color: @themeText;
-  background: @themeBg;
+#custom-power:hover {
+  background: @powerText;
+  color: @background;
 }
 
-/* Battery states */
+/* ---- Battery states ------------------------------------------------ */
+
 #battery.warning {
   color: #ffb86c;
-  background: rgba(255, 184, 108, 0.3);
 }
 
 #battery.critical {
   color: #ff657a;
-  background: rgba(255, 101, 122, 0.4);
   animation: pulse 1.5s infinite;
 }
 
 @keyframes pulse {
-  /*0%, 100% { opacity: 1; }*/
-  50% { opacity: 0.6; }
+  50% { opacity: 0.5; }
 }
