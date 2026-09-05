@@ -2,7 +2,7 @@
 
 * {
   font-family: "Ubuntu", "Font Awesome 6 Free";
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
   margin: 0;
   padding: 0;
@@ -36,7 +36,6 @@ tooltip {
   border: 1.5px solid alpha(@foreground, 0.16);
   border-radius: 16px;
   box-shadow: 0 4px 14px alpha(black, 0.35);
-  padding: 0 4px;
 }
 
 /* ---- Individual modules inside a group --------------------------- */
@@ -54,8 +53,8 @@ tooltip {
 #network,
 #bluetooth,
 #battery {
-  padding: 5px 12px;
-  border-radius: 12px;
+  padding: 4px 12px;
+  border-radius: 16px;
   transition: background 200ms ease-in-out, color 200ms ease-in-out;
 }
 
